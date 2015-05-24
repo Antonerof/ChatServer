@@ -10,7 +10,7 @@ public class MessageList {
 
 	private final List<Message> list = new ArrayList<Message>();
 	
-	public static MessageList getInstance() {
+	public synchronized static MessageList getInstance() {
 		return msgList;
 	}
 	

@@ -21,19 +21,18 @@ public class AddServlet extends HttpServlet {
 			throws IOException 
 	{
 		Message m = null;
-		
-		try {
-			m = Message.readFromStream(req.getInputStream());
-			User user = UserList.getUserByName(m.from);
-			m.setIdRoom(user.getIdRoom());
-		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
-		}
-		
+
+		//			m = Message.readFromStream(req.getInputStream());
+		m = Message.readFromStreamXML(req.getInputStream());
+		User user = UserList.getUserByName(m.getFrom());
+		m.setIdRoom(user.getIdRoom());
+
 		if (m == null) {
 			resp.setStatus(400); // bad request
 			return;
 		} else
 			msgList.add(m);
 	}
+
+
 }

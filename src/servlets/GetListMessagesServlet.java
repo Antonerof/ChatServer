@@ -34,12 +34,12 @@ public class GetListMessagesServlet extends HttpServlet {
 		
 		for (int i = from; i < list.size(); i++) {
 			m = list.get(i);
-			if (m.to.equals(username)){
-				m.writeToStream(os);
+			if (m.getTo().equals(username)){
+				m.writeToStreamXML(os);
 				break;
 			}
-			if (m.to.equals("") && (m.getIdRoom() == user.getIdRoom())){
-				m.writeToStream(os);
+			if (m.getTo().equals("") && (m.getIdRoom() == user.getIdRoom())){
+				m.writeToStreamXML(os);
 				break;
 			}
 		}

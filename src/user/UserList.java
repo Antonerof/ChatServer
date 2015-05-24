@@ -57,7 +57,7 @@ public class UserList {
         list.get(position).setStatus((status));// set online
     }
 
-    public static List<User> getList() {
+    public static synchronized List<User> getList() {
         return list;
     }
 
